@@ -82,7 +82,17 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        checkleaf(A).rest = B;
+        return A;
+    }
+    public static IntList checkleaf(IntList A){
+        if(A.rest == null)
+        {
+            return A;
+        }
+        else{
+            return checkleaf(A.rest);
+        }
     }
 
     /**
@@ -91,7 +101,17 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList D = deepCopy(A);
+        checkleaf(D).rest = B;
+        return D;
+    }
+    public static IntList deepCopy(IntList original) {
+        if (original == null) {
+            return null;
+        }
+
+        IntList newRest = deepCopy(original.rest);
+        return new IntList(original.first, newRest);
     }
 
 
